@@ -1,0 +1,643 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: Roboto, Montserrat ;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 8vh;
+}
+
+.brand{
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.navbar-ul{
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
+.navbar-li{
+  padding: 5px;
+}
+
+/* HOMPAGE */
+.banner{
+  height: 70vh;
+  width: 100vw;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(banner.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: start;
+  color: white;
+}
+
+.banner-wrapper{
+  width: 35%;
+  height: 50%;
+  margin-left: 50px;
+  font-family: Montserrat;
+}
+
+.banner h2{
+  font-size: 38px;
+  margin: 15px;
+}
+
+.banner p{
+  margin: 15px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.banner button {
+  height: 50px;
+  width: 170px;
+  margin: 10px 20px;
+  background-color: #6cbd47;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.banner button:hover{
+  background-color: rgb(1, 94, 1)
+}
+
+.about {
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  gap: 60px;
+}
+
+.about-text {
+  max-width: 45%;
+}
+
+.about-text .highlight {
+  font-size: 16px;
+  color: #6cbd47;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.about-text h1 {
+  font-size: 36px;
+  margin: 10px 0;
+  color: #222;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+}
+
+.about-text .contact-link {
+  font-size: 16px;
+  text-decoration: none;
+  color: #6cbd47;
+  font-weight: bold;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  max-width: 400px;
+  border-radius: 5px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+/* SERVICES */
+
+.services{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: gainsboro;
+  height: 50vh;
+  width: 100%;
+  padding: 10px;
+}
+.services-text{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 80px;
+}
+
+.services span{
+  font-size: 16px;
+  font-weight: 600;
+  color: #6cbd47;
+  margin: 5px;
+}
+
+.services h4{
+  font-size: 32px;
+  margin: 5px;
+  font-family: Montserrat;
+}
+
+.service-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.service-card {
+  height: 350px;
+  width: 300px;
+  margin: 10px 20px;
+  background-color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.service-card:hover{
+  animation-duration: 100ms;
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.service-card:hover .service-card-title{
+  color: #6cbd47;
+}
+
+.service-card-img{
+  height: 65%;
+  width: 100%;
+}
+
+.service-card-title{
+  font-size: 20px;
+  padding: 10px;
+}
+
+.sevice-card-exp{
+  padding: 5px 10px;
+  font-size: 16px;
+  color: gray;
+}
+
+/* CONTACT */
+
+.contact-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 50px;
+}
+
+.contact-form {
+  flex: 1 1 60%;
+  max-width: 600px;
+}
+
+.contact-form h2 {
+  color: #6cbd47;
+  text-transform: uppercase;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.contact-form h3 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.contact-form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.contact-form label span {
+  color: red;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-form button {
+  padding: 10px 20px;
+  background-color: #6cbd47;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #5aa639;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-details {
+  flex: 1 1 35%;
+  max-width: 400px;
+}
+
+.map iframe {
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.details p {
+  margin-bottom: 10px;
+}
+
+.details a {
+  color: #6cbd47;
+  text-decoration: none;
+}
+
+
+/* FAQ */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 40vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(faq-banner.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.hero h2{
+  font-size: 36px;
+  font-family: Montserrat;
+  color: white;
+}
+
+.hero p{
+  font-size: 20px;
+  color: white;
+}
+
+.hero-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 60%; 
+  margin: 0 auto;
+}
+
+.hero-wrapper p{
+  font-size: 16px;
+  font-weight: 500;
+  color: #6cbd47;
+  margin: 10px 10px 5px 10px;
+}
+
+.hero-wrapper h3{
+  margin: 10px;
+  font-size: 20px;
+}
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%; 
+  margin: 0 auto;
+}
+
+.getin-touch{
+  height: 30vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.text{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.text p{
+  font-size: 18px;
+}
+
+.text h4{
+  font-size: 30px;
+}
+
+.getin-touch button{
+  height: 40px;
+  width: 170px;
+  font-weight: 600;
+  border: 2px solid white;
+  background-color: #111;
+  color: white;
+  transition: 0.4s;
+}
+
+.getin-touch button:hover{
+  border: 2px solid #6cbd47;
+  background-color: #6cbd47;
+  color: white;
+  cursor: pointer;
+}
+
+/* HOW IT WORKS */
+
+.information {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  background-color: #EEF1EF;
+  padding: 70px;
+  position: relative; 
+}
+
+.information img {
+  width: 50%; 
+  height: auto; 
+}
+
+.info-text {
+  position: relative;
+  width: 50%; 
+  text-align: left; 
+  margin-top: 10px; 
+}
+
+.information span {
+  font-size: 18px;
+  font-weight: 500;
+  color: #5aa639;
+}
+
+.information h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+/* testimonial */
+.testimonial-hero{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 35vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('testimonial-hero.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.testimonial-hero h2{
+  margin: 5px 50px;
+  font-size: 60px;
+  color: white;
+}
+
+.testimonial-hero p{
+  margin: 5px 50px;
+  font-size: 22px;
+  color: white;
+}
+
+.reviews-wrapper{
+  width: 100%;
+  margin-top: 50px;
+  justify-content: center;
+  align-items: center;
+}
+
+.reviews-wrapper span{
+  color: #6cbd47;
+  font-weight: 600;
+  margin: 50px 0px 20px 100px;
+}
+
+.reviews-wrapper h3{
+  font-size: 34px;
+  margin-left: 100px;
+  margin-top: 10px;
+  width: 40%;
+}
+
+.reviews{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px;
+  margin: 20px;
+  flex-wrap: wrap;
+  width: 18%;
+  height: 70%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.reviews-img{
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  margin: 10px 5px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.reviews-name{
+  margin: 5px;
+  font-size: 22px;
+}
+
+.reviews-title{
+  margin: 5px;
+  font-size: 18px;
+  font-weight: 400;
+  color: #595959;
+}
+
+.reviews-comment{
+  margin: 5px;
+  font-size: 18px;
+  word-spacing: 2.5px;
+  color: #595959;
+}
+
+/* PRIVACY POLICY */
+.privacy-hero{
+  height: 35vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('privacy-hero.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.privacy-hero h2{
+  margin-left: 100px;
+  margin-bottom: 15px;
+  font-size: 60px;
+  color: white;
+}
+
+.privacy-hero span{
+  margin-left: 100px;
+  font-size: 26px;
+  color: white;
+}
+
+.privacy-section{
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 100px ;
+}
+
+.privacy-section span{
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #6cbd47;
+  text-transform: uppercase;
+}
+
+.privacy-section h3{
+  width: 38%;
+  font-size: 34px;
+}
+/* FOOTER */
+
+.footer{
+  height: 25vh;
+  background-color: #162415;
+
+}
+
+.footer-ul{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  height: 80%;
+}
+
+.footer-li{
+  font-size: 18px;
+  list-style: none;
+  margin: 20px;
+}
+
+.footer-li:hover{
+  border-bottom: 1px solid white;
+}
+
+.footer-a{
+  text-decoration: none;
+  color: white;
+}
+
+/* LOGİN */
+
+/* PRICING */
+
+.price-cards{
+
+}
+
+.price-cards-wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.price-card{
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  padding: 20px;
+  border: 1.5px solid #b6bdbe;
+  border-radius: 20px;
+}
+
+.price-card-title{
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.price-card-price{
+  font-size: 32px;
+  font-weight: 600;
+}
+
+.price-card-btn{
+  height: 50px;
+  width: 80%;
+  display: flex;
+  align-self: center;
+  justify-content: center ;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #e2e2e2;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.price-card-btn:hover{
+  background-color: #cecece;
+}
+
+.prices-ul{
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+}
+
+.prices-li{
+  text-decoration: none;
+  margin: 10px auto;
+}
