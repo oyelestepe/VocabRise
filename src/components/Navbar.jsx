@@ -15,7 +15,6 @@ function Navbar() {
       <Button variant="contained" size='small' style={{margin:'5px'}}><Link to="/signup">Sign up</Link></Button>
       <Button variant='contained' size='small' style={{margin:'5px', backgroundColor:'#ececec', color:'black', fontWeight:'bold'}} ><Link to="/login">Log in</Link></Button>
       </div>
-      
     </nav>
     <Outlet />
     </>

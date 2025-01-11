@@ -14,7 +14,7 @@ const ContactForm = () => {
         <label htmlFor="email">
           Email address <span>*</span>
         </label>
-        <input type="email" id="email" placeholder="email@website.com" required />
+        <input type="email" id="email" placeholder="email@gmail.com" required />
 
         <label htmlFor="phone">
           Phone number <span>*</span>
@@ -25,12 +25,11 @@ const ContactForm = () => {
         <textarea id="message" rows="4" placeholder="Write your message here..."></textarea>
 
         <div className="checkbox-container">
-          <input type="checkbox" id="consent" required />
+          <input type="checkbox" id="consent" checked required />
           <label htmlFor="consent">
             I allow this website to store my submission so they can respond to my inquiry.
           </label>
         </div>
-
         <button type="submit">SUBMIT</button>
       </form>
     </div>
