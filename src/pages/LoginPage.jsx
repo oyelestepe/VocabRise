@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Formik, Form, Field } from 'formik';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { loginSchema } from '../assets/validationSchemas';
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // API call for login can be added here
-    console.log('Login submitted:', { email, password });
+  const handleSubmit = (values, { resetForm }) => {
+    console.log(values);
+    toast.success('Login successfully!');
+    resetForm();
   };
 
   return (
-    <div className="login-container">
-      <h1>Login</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit">Login</button>
-      </form>
+    <div className="login-page">
+      <ToastContainer />
+      <div className="login-container">
+        <h2>Login</h2>
+        <Formik
+          initialValues={{ email: '', password: '' }}
+          validationSchema={loginSchema}
+          onSubmit={handleSubmit}
+        >
+          {({ errors, touched }) => (
+            <Form>
+              <div className="form-group">
+                <Field name="email" type="email" placeholder="Email" className="form-input" />
+                {errors.email && touched.email && <div className="error-message">{errors.email}</div>}
+              </div>
+              <div className="form-group">
+                <Field name="password" type="password" placeholder="Password" className="form-input" />
+                {errors.password && touched.password && <div className="error-message">{errors.password}</div>}
+              </div>
+              <button type="submit" className="submit-button">Login</button>
+            </Form>
+          )}
+        </Formik>
+      </div>
     </div>
   );
 };
