@@ -3,12 +3,24 @@ import { Formik, Form, Field } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { loginSchema } from '../assets/validationSchemas';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
+import {useNavigate} from 'react-router-dom';
 
 const LoginPage = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    toast.success('Login successfully!');
-    resetForm();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, values.email, values.password);
+      console.log('User signed in:', userCredential.user);
+      toast.success('Login successful!');
+      resetForm();
+      navigate('/');
+    } catch (error) {
+      console.error('Error signing in:', error);
+      toast.error('Login failed: ' + error.message);
+    }
   };
 
   return (

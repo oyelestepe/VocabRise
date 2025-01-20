@@ -3,12 +3,20 @@ import { Formik, Form, Field } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { signUpSchema } from '../assets/validationSchemas';
+import { auth } from '../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const SignUpPage = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    toast.success('Registration successful!');
-    resetForm();
+  const handleSubmit = async (values, { resetForm }) => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
+      console.log('User registered:', userCredential.user);
+      toast.success('Registration successful!');
+      resetForm();
+    } catch (error) {
+      console.error('Error during registration:', error);
+      toast.error('Registration failed: ' + error.message);
+    }
   };
 
   return (
