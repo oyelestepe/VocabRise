@@ -18,7 +18,7 @@ const ContactDetails = () => {
           <strong>Get in touch</strong>
         </p>
         <p>
-          📧 <a href="mailto:burakcetin77@outlook.com">burakcetin77@outlook.com</a>
+          📧 <a href="mailto:vocabrise@gmail.com">vocabrise@gmail.com</a>
         </p>
         <p>
           <strong>Location</strong>
