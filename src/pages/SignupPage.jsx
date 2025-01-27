@@ -1,55 +1,70 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { signUpSchema } from '../assets/validationSchemas';
-import { auth } from '../firebase';
+import { auth, db, doc, setDoc } from '../firebase'; // setDoc'i import edin
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-const SignUpPage = () => {
+const SignupPage = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
-      console.log('User registered:', userCredential.user);
+      const { email, password, name, subscriptionPlan } = values;
+
+      // Create user
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // Saving user information to Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        name,
+        email,
+        subscriptionPlan,
+      });
+
       toast.success('Registration successful!');
       resetForm();
     } catch (error) {
-      console.error('Error during registration:', error);
-      toast.error('Registration failed: ' + error.message);
+      toast.error('Error: ' + error.message);
     }
   };
 
   return (
-    <div className="sign-up-page">
+    <div className="signup-page">
       <ToastContainer />
-      <div className="sign-up-container">
-        <h2>Sign up</h2>
-        <Formik
-          initialValues={{ email: '', password: '', confirmPassword: '' }}
-          validationSchema={signUpSchema}
-          onSubmit={handleSubmit}
-        >
-          {({ errors, touched }) => (
-            <Form>
-              <div className="form-group">
-                <Field name="email" type="email" placeholder="Email" className="form-input" />
-                {errors.email && touched.email && <div className="error-message">{errors.email}</div>}
-              </div>
-              <div className="form-group">
-                <Field name="password" type="password" placeholder="Password" className="form-input" />
-                {errors.password && touched.password && <div className="error-message">{errors.password}</div>}
-              </div>
-              <div className="form-group">
-                <Field name="confirmPassword" type="password" placeholder="Repeat password" className="form-input" />
-                {errors.confirmPassword && touched.confirmPassword && <div className="error-message">{errors.confirmPassword}</div>}
-              </div>
-              <button type="submit" className="submit-button">Sign up</button>
-            </Form>
-          )}
-        </Formik>
-      </div>
+      <h2>Sign Up</h2>
+      <Formik
+        initialValues={{ name: '', email: '', password: '', subscriptionPlan: 'Free' }}
+        validationSchema={signUpSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ errors, touched }) => (
+          <Form>
+            <div className="form-group">
+              <Field name="name" type="text" placeholder="Name" />
+              {errors.name && touched.name && <div>{errors.name}</div>}
+            </div>
+            <div className="form-group">
+              <Field name="email" type="email" placeholder="Email" />
+              {errors.email && touched.email && <div>{errors.email}</div>}
+            </div>
+            <div className="form-group">
+              <Field name="password" type="password" placeholder="Password" />
+              {errors.password && touched.password && <div>{errors.password}</div>}
+            </div>
+            <div className="form-group">
+              <label htmlFor="subscriptionPlan">Subscription Plan:</label>
+              <Field name="subscriptionPlan" as="select">
+                <option value="Free">Free</option>
+                <option value="Premium">Premium</option>
+                <option value="Pro">Pro</option>
+              </Field>
+            </div>
+            <button type="submit">Sign Up</button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };
 
-export default SignUpPage;
+export default SignupPage;
