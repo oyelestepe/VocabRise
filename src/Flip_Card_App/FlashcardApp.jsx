@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import oxford3000 from './oxford3000.json';
 import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import './FlashcardApp.css';
 
 function FlashcardApp() {
@@ -9,6 +10,7 @@ function FlashcardApp() {
   const [words, setWords] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
+  const [speechRate, setSpeechRate] = useState(1);
 
   const handleLevelChange = (level) => {
     const newSelectedLevels = selectedLevels.includes(level)
@@ -21,47 +23,66 @@ function FlashcardApp() {
       selectedWords = [];
     } else {
       selectedWords = newSelectedLevels.flatMap(l => oxford3000[l] || []);
-      selectedWords = selectedWords.sort(() => Math.random() - 0.5); // Random
+      selectedWords = selectedWords.sort(() => Math.random() - 0.5);
     }
     setWords(selectedWords);
-    setCurrentIndex(0); // Reset to first word
-    setIsFlipped(false); // Reset card flip
+    setCurrentIndex(0);
+    setIsFlipped(false);
   };
 
-  // Previous button
   const handlePrevious = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-      setIsFlipped(false); // Reset card flip
+      setIsFlipped(false);
+      setTimeout(() => {
+        setCurrentIndex(currentIndex - 1);
+      }, 300);
     }
   };
 
-  // Next button
   const handleNext = () => {
     if (currentIndex < words.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-      setIsFlipped(false); // Reset card flip
+      setIsFlipped(false);
+      setTimeout(() => {
+        setCurrentIndex(currentIndex + 1);
+      }, 300);
     }
   };
 
-  // Flip the card
   const handleFlip = () => {
     setIsFlipped(!isFlipped);
   };
 
+  const pronounceWord = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'en-US';
+    utterance.rate = speechRate;
+    
+    const voices = window.speechSynthesis.getVoices();
+    const englishVoice = voices.find(voice => voice.lang === 'en-US' || voice.lang === 'en-GB');
+    if (englishVoice) {
+      utterance.voice = englishVoice;
+    }
+    
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const handleSpeechRateChange = (event) => {
+    setSpeechRate(parseFloat(event.target.value));
+  };
+
   useEffect(() => {
-    handleLevelChange('A1'); // Set A1 selected by default on load
+    handleLevelChange('A1');
   }, []);
 
   return (
-    <div style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Flashcard Uygulaması</h1>
+    <div className="flashcard-app">
+      <h1 className="app-title">Flashcard App</h1>
+      
       <div>
-        {['A1', 'A2', 'B1', 'B2', 'Karışık'].map(level => (
+        {['A1', 'A2', 'B1', 'B2', 'Mixed'].map(level => (
           <label
             key={level}
             className={`level-label ${selectedLevels.includes(level) ? `selected-${level}` : ''}`}
-            style={{ margin: '0 10px' }}
           >
             <input
               type="checkbox"
@@ -73,21 +94,48 @@ function FlashcardApp() {
         ))}
       </div>
 
+      <div className="speech-rate-container">
+        <label>
+          Speech Rate:
+          <input
+            type="range"
+            min="0.5"
+            max="2"
+            step="0.1"
+            value={speechRate}
+            onChange={handleSpeechRateChange}
+          />
+          <span>{speechRate.toFixed(1)}</span>
+        </label>
+      </div>
+
       {words.length > 0 && (
-        <div style={{ marginTop: '20px' }}>
+        <div>
           <div className={`flashcard ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
-            <div className="front">
-              <h2>{words[currentIndex].En}</h2>
+          <div className="front">
+            <div className="volume-container">
+              <button 
+                className="volume-button" 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  pronounceWord(words[currentIndex].En);
+                }}
+              >
+                <VolumeUpIcon fontSize="medium" />
+              </button>
             </div>
+            <h2>{words[currentIndex].En}</h2>
+          </div>
             <div className="back">
               <h2>{words[currentIndex].Tr}</h2>
             </div>
           </div>
-          <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          
+          <div className="navigation-container">
             <button className="prev-btn" onClick={handlePrevious} disabled={currentIndex === 0}>
               <WestIcon fontSize="large" />
             </button>
-            <span style={{ margin: '0 20px', fontSize: '18px' }}>
+            <span className="pagination">
               {currentIndex + 1} / {words.length}
             </span>
             <button className="next-btn" onClick={handleNext} disabled={currentIndex === words.length - 1}>
@@ -97,7 +145,7 @@ function FlashcardApp() {
         </div>
       )}
 
-      {selectedLevels.length === 0 && <p>Lütfen seviye seçin.</p>}
+      {selectedLevels.length === 0 && <p>Please select a level.</p>}
     </div>
   );
 }
