@@ -1,0 +1,116 @@
+.quiz-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    text-align: center;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .quiz-start {
+    margin-top: 20px;
+  }
+  
+  .level-selection {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .level-label {
+    padding: 10px 20px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.3s;
+  }
+  
+  .level-label.selected {
+    background: #3498db;
+    color: white;
+  }
+  
+  .question-count {
+    margin-bottom: 20px;
+  }
+  
+  .question-count input {
+    padding: 5px;
+    margin-left: 10px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    width: 60px;
+  }
+  
+  .start-button {
+    padding: 10px 20px;
+    background: #2ecc71;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+  }
+  
+  .start-button:hover {
+    background: #27ae60;
+  }
+  
+  .quiz-game {
+    margin-top: 20px;
+  }
+  
+  .quiz-progress {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .quiz-question {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  .quiz-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  
+  .option-btn {
+    padding: 15px;
+    border: 1px solid #3498db;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  .option-btn:hover {
+    background: #3498db;
+    color: white;
+  }
+  
+  .quiz-results {
+    margin-top: 20px;
+  }
+  
+  .reset-button {
+    padding: 10px 20px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+  }
+  
+  .reset-button:hover {
+    background: #c0392b;
+  }
