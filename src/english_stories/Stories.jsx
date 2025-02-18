@@ -6,11 +6,37 @@ const Stories = () => {
   const [stories, setStories] = useState(storiesData);
   const [selectedLevel, setSelectedLevel] = useState('A1');
   const [selectedStory, setSelectedStory] = useState(null);
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [tooltip, setTooltip] = useState({ 
     visible: false, 
     text: '', 
     position: { x: 0, y: 0 } 
   });
+
+  // update index when story is selected
+  const handleStorySelect = (story) => {
+    const index = stories[selectedLevel].findIndex(s => s.id === story.id);
+    setCurrentStoryIndex(index);
+    setSelectedStory(story);
+  };
+
+  // next story
+  const handleNextStory = () => {
+    const nextIndex = currentStoryIndex + 1;
+    if (nextIndex < stories[selectedLevel].length) {
+      setCurrentStoryIndex(nextIndex);
+      setSelectedStory(stories[selectedLevel][nextIndex]);
+    }
+  };
+
+  // prev story
+  const handlePrevStory = () => {
+    const prevIndex = currentStoryIndex - 1;
+    if (prevIndex >= 0) {
+      setCurrentStoryIndex(prevIndex);
+      setSelectedStory(stories[selectedLevel][prevIndex]);
+    }
+  };
 
   const renderStoryContent = (content, vocabulary) => {
     return content.split(' ').map((word, index) => {
@@ -63,7 +89,7 @@ const Stories = () => {
             <div 
               key={story.id} 
               className="story-card"
-              onClick={() => setSelectedStory(story)}
+              onClick={() => handleStorySelect(story)}
             >
               <h3>{story.title}</h3>
               <p>{story.content.substring(0, 100)}...</p>
@@ -72,9 +98,25 @@ const Stories = () => {
         </div>
       ) : (
         <div className="story-reader">
-          <button onClick={() => setSelectedStory(null)}>
-            ← Back to Stories
-          </button>
+          <div className="navigation-controls">
+            <button onClick={() => setSelectedStory(null)}>
+              ← All Stories
+            </button>
+            <div className="story-nav-buttons">
+              <button 
+                onClick={handlePrevStory}
+                disabled={currentStoryIndex === 0}
+              >
+                ← Previous
+              </button>
+              <button 
+                onClick={handleNextStory}
+                disabled={currentStoryIndex === stories[selectedLevel].length - 1}
+              >
+                Next →
+              </button>
+            </div>
+          </div>
           <h1>{selectedStory.title}</h1>
           <div className="story-content">
             {renderStoryContent(selectedStory.content, selectedStory.vocabulary)}
