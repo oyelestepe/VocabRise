@@ -37,7 +37,12 @@ const Stories = () => {
       setSelectedStory(stories[selectedLevel][prevIndex]);
     }
   };
-
+  /* reading time calculator*/
+  const calculateReadingTime = (text) => {
+    const wordsPerMinute = 200;
+    const wordCount = text.split(/\s+/).length;
+    return Math.ceil(wordCount / wordsPerMinute);
+  };
   const renderStoryContent = (content, vocabulary) => {
     return content.split(' ').map((word, index) => {
       const cleanWord = word.toLowerCase().replace(/[^a-z]/g, '');
@@ -116,6 +121,11 @@ const Stories = () => {
                 Next →
               </button>
             </div>
+          </div>
+          {/* reading time calculator*/}
+          <div className="meta-info">
+            <span>⏳ {calculateReadingTime(selectedStory.content)} mins</span>
+            <span>📖 {selectedStory.content.split(/\s+/).length} words</span>
           </div>
           <h1>{selectedStory.title}</h1>
           <div className="story-content">
