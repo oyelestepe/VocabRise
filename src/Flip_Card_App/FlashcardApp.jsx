@@ -33,18 +33,14 @@ function FlashcardApp() {
   const handlePrevious = () => {
     if (currentIndex > 0) {
       setIsFlipped(false);
-      setTimeout(() => {
-        setCurrentIndex(currentIndex - 1);
-      }, 300);
+      setCurrentIndex(currentIndex - 1);
     }
   };
 
   const handleNext = () => {
     if (currentIndex < words.length - 1) {
       setIsFlipped(false);
-      setTimeout(() => {
-        setCurrentIndex(currentIndex + 1);
-      }, 300);
+      setCurrentIndex(currentIndex + 1);
     }
   };
 
@@ -78,16 +74,17 @@ function FlashcardApp() {
     <div className="flashcard-app">
       <h1 className="app-title">Flashcard App</h1>
       
-      <div>
+      <div className="level-selection">
         {['A1', 'A2', 'B1', 'B2', 'Mixed'].map(level => (
           <label
             key={level}
-            className={`level-label ${selectedLevels.includes(level) ? `selected-${level}` : ''}`}
+            className={`level-label ${selectedLevels.includes(level) ? 'selected' : ''}`}
           >
             <input
               type="checkbox"
               checked={selectedLevels.includes(level)}
               onChange={() => handleLevelChange(level)}
+              hidden
             />
             {level}
           </label>
@@ -111,34 +108,34 @@ function FlashcardApp() {
 
       {words.length > 0 && (
         <div>
-          <div className={`flashcard ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
-          <div className="front">
-            <div className="volume-container">
-              <button 
-                className="volume-button" 
-                onClick={(e) => {
-                  e.stopPropagation();
-                  pronounceWord(words[currentIndex].En);
-                }}
-              >
-                <VolumeUpIcon fontSize="medium" />
-              </button>
-            </div>
-            <h2>{words[currentIndex].En}</h2>
-          </div>
-            <div className="back">
-              <h2>{words[currentIndex].Tr}</h2>
+          <div className="flashcard-container">
+            <div className={`flashcard ${isFlipped ? 'flipped' : ''}`} onClick={handleFlip}>
+              <div className="front">
+                <button 
+                  className="volume-button" 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    pronounceWord(words[currentIndex].En);
+                  }}
+                >
+                  <VolumeUpIcon fontSize="medium" />
+                </button>
+                <h2>{words[currentIndex].En}</h2>
+              </div>
+              <div className="back">
+                <h2>{words[currentIndex].Tr}</h2>
+              </div>
             </div>
           </div>
           
           <div className="navigation-container">
-            <button className="prev-btn" onClick={handlePrevious} disabled={currentIndex === 0}>
+            <button className="nav-button" onClick={handlePrevious} disabled={currentIndex === 0}>
               <WestIcon fontSize="large" />
             </button>
             <span className="pagination">
               {currentIndex + 1} / {words.length}
             </span>
-            <button className="next-btn" onClick={handleNext} disabled={currentIndex === words.length - 1}>
+            <button className="nav-button" onClick={handleNext} disabled={currentIndex === words.length - 1}>
               <EastIcon fontSize="large" />
             </button>
           </div>
