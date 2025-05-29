@@ -25,7 +25,7 @@ function Navbar() {
       <nav className="navbar">
         <span className="brand">
         <img src="/logo.png" alt="VocabRise Logo" style={{height:'36px'}}></img>
-        <span s>VocabRise</span>
+        <span>VocabRise</span>
         </span>
         <div style={{ display: 'flex', alignItems: 'center' }}>
           <ul className="navbar-ul">
@@ -36,17 +36,37 @@ function Navbar() {
               <Link to="/about">About</Link>
             </li>
             <li className="navbar-li">
-              <Link to="/services">Services</Link>
+              <Link to="/dictionary">Dictionary</Link>
+            </li>
+            <li className="navbar-li">
+              <Link to="/stories">Stories</Link>
+            </li>
+            <li className="navbar-li navbar-dropdown">
+              <span>Games</span>
+              <ul className="dropdown-menu">
+                <li>
+                  <Link to="/matching-game">Matching Game</Link>
+                </li>
+                <li>
+                  <Link to="/quiz-game">Quiz Game</Link>
+                </li>
+                <li>
+                  <Link to="/speed-quiz">Speed Quiz</Link>
+                </li>
+                <li>
+                  <Link to="/wordchain">Wordchain</Link>
+                </li>
+              </ul>
             </li>
           </ul>
-          {user ? ( // Kullanıcı giriş yapmışsa
+          {user ? (
             <>
               <IconButton
                 color="inherit"
-                onClick={() => navigate('/profile')} // Profil sayfasına yönlendir
+                onClick={() => navigate('/profile')}
                 sx={{ margin: '0 10px' }}
               >
-                <AccountCircleIcon fontSize="large" /> {/* Kullanıcı ikonu */}
+                <AccountCircleIcon fontSize="large" />
               </IconButton>
               <Button
                 variant="contained"
@@ -57,7 +77,7 @@ function Navbar() {
                 Logout
               </Button>
             </>
-          ) : ( // Kullanıcı giriş yapmamışsa
+          ) : (
             <>
               <Button variant="contained" size="small" style={{ margin: '5px' }}>
                 <Link to="/signup" style={{ textDecoration: 'none', color: 'inherit' }}>
