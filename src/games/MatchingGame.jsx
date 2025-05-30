@@ -27,8 +27,13 @@ function MatchingGame() {
     }
 
     // fetch words from selected levels
-    const selectedWords = selectedLevels.flatMap(l => oxford3000[l] || []);
-    const shuffled = [...selectedWords].sort(() => Math.random() - 0.5).slice(0, 8); // 8 kelime (4 çift)
+    let selectedWords = [];
+    if (selectedLevels.includes('Karışık')) {
+      selectedWords = Object.values(oxford3000).flat();
+    } else {
+      selectedWords = selectedLevels.flatMap(l => oxford3000[l] || []);
+    }
+    const shuffled = [...selectedWords].sort(() => Math.random() - 0.5).slice(0, 8);
 
     // creating cards
     const wordPairs = shuffled.flatMap(word => [
@@ -59,6 +64,12 @@ function MatchingGame() {
   // timer
   useEffect(() => {
     if (gameStarted && timeLeft > 0) {
+      // End game if all pairs are matched
+      if (matchedPairs.length === shuffledWords.length && shuffledWords.length > 0) {
+        setGameEnded(true);
+        setGameStarted(false);
+        return;
+      }
       const timer = setInterval(() => {
         setTimeLeft(prev => prev - 1);
       }, 1000);
@@ -67,7 +78,7 @@ function MatchingGame() {
       setGameEnded(true);
       setGameStarted(false);
     }
-  }, [gameStarted, timeLeft]);
+  }, [gameStarted, timeLeft, matchedPairs, shuffledWords.length]);
 
   // reset
   const resetGame = () => {
