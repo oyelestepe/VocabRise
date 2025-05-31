@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import oxford3000 from '../Flip_Card_App/oxford3000.json';
 import {
   TextField,
@@ -14,26 +14,27 @@ import {
 function Dictionary() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const workerRef = useRef();
+
+  useEffect(() => {
+    workerRef.current = new window.Worker(new URL('./dictionaryWorker.js', import.meta.url));
+    workerRef.current.onmessage = (e) => {
+      setSearchResults(e.data);
+    };
+    // Send the dataset once
+    workerRef.current.postMessage({ type: 'init', data: oxford3000 });
+    return () => {
+      workerRef.current.terminate();
+    };
+  }, []);
 
   const handleSearch = (e) => {
-    const term = e.target.value.toLowerCase();
+    const term = e.target.value;
     setSearchTerm(term);
 
-    if (term === '') {
-      setSearchResults([]);
-      return;
+    if (workerRef.current) {
+      workerRef.current.postMessage({ type: 'search', term });
     }
-
-    const results = Object.entries(oxford3000)
-      .flatMap(([level, words]) =>
-        words.map((word) => ({ ...word, level }))
-      )
-      .filter(
-        (word) =>
-          word.En.toLowerCase().includes(term) || word.Tr.toLowerCase().includes(term)
-      );
-
-    setSearchResults(results);
   };
 
   return (
