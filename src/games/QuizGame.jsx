@@ -35,7 +35,12 @@ function QuizGame() {
     }
 
     // fetch words from selected levels
-    const selectedWords = selectedLevels.flatMap(l => oxford3000[l] || []);
+    let selectedWords = [];
+    if (selectedLevels.includes('Karışık')) {
+      selectedWords = Object.values(oxford3000).flat();
+    } else {
+      selectedWords = selectedLevels.flatMap(l => oxford3000[l] || []);
+    }
     const shuffledWords = [...selectedWords].sort(() => Math.random() - 0.5).slice(0, questionCount);
 
     // create questions
