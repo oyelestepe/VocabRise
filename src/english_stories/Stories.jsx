@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import storiesData from './stories.json';
 import './stories.css';
+import Navbar from '../components/Navbar';
 
 const Stories = () => {
   const [stories, setStories] = useState(storiesData);
@@ -70,6 +71,8 @@ const Stories = () => {
   };
 
   return (
+    <>
+      <Navbar />
     <div className="story-container">
       {/* Level selection */}
       <div className="level-selector">
@@ -147,6 +150,7 @@ const Stories = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 

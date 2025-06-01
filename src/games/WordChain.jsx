@@ -13,6 +13,7 @@ import {
   FormLabel,
 } from '@mui/material';
 import oxford3000 from '../Flip_Card_App/oxford3000.json';
+import Navbar from '../components/Navbar';
 
 function WordChain() {
   const [selectedLevels, setSelectedLevels] = useState([]);
@@ -118,6 +119,8 @@ function WordChain() {
   }, [gameStarted, timeLeft, gameEnded]);
 
   return (
+    <>  
+    <Navbar />
     <Container maxWidth="md" sx={{ mt: 4, textAlign: 'center' }}>
       <Typography variant="h3" gutterBottom>
         Kelime Zinciri
@@ -212,6 +215,7 @@ function WordChain() {
         </Button>
       )}
     </Container>
+    </>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import oxford3000 from '../Flip_Card_App/oxford3000.json';
 import './gamesCss/QuizGame.css';
+import Navbar from '../components/Navbar';
 
 function QuizGame() {
   const [selectedLevels, setSelectedLevels] = useState([]);
@@ -90,6 +91,8 @@ function QuizGame() {
   };
 
   return (
+    <>
+      <Navbar />
     <div className="quiz-container">
       <h1>Quiz Oyunu</h1>
 
@@ -163,6 +166,7 @@ function QuizGame() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

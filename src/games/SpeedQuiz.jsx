@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import oxford3000 from '../Flip_Card_App/oxford3000.json';
 import './gamesCss/SpeedQuiz.css';
+import Navbar from '../components/Navbar';
 
 function SpeedQuiz() {
   const [selectedLevels, setSelectedLevels] = useState([]);
@@ -109,6 +110,8 @@ function SpeedQuiz() {
   };
 
   return (
+    <>  
+    <Navbar />
     <div className="speed-quiz-container">
       <h1>Speed Quiz</h1>
 
@@ -177,6 +180,7 @@ function SpeedQuiz() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import oxford3000 from '../Flip_Card_App/oxford3000.json';
 import './gamesCss/MatchingGame.css'; 
+import Navbar from '../components/Navbar';
 
 function MatchingGame() {
   const [selectedLevels, setSelectedLevels] = useState([]);
@@ -90,6 +91,8 @@ function MatchingGame() {
   };
 
   return (
+    <>
+      <Navbar />
     <div className="matching-game-container">
       <h1>Matching Game</h1>
 
@@ -149,6 +152,7 @@ function MatchingGame() {
         </div>
       )}
     </div>
+    </>
   );
 }
 

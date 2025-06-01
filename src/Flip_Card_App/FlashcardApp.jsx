@@ -4,6 +4,7 @@ import EastIcon from '@mui/icons-material/East';
 import WestIcon from '@mui/icons-material/West';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import './FlashcardApp.css';
+import Navbar from '../components/Navbar';
 
 function FlashcardApp() {
   const [selectedLevels, setSelectedLevels] = useState([]);
@@ -71,6 +72,8 @@ function FlashcardApp() {
   }, []);
 
   return (
+    <>
+      <Navbar />
     <div className="flashcard-app">
       <h1 className="app-title">Flashcard App</h1>
       
@@ -144,6 +147,7 @@ function FlashcardApp() {
 
       {selectedLevels.length === 0 && <p>Please select a level.</p>}
     </div>
+    </>
   );
 }
 

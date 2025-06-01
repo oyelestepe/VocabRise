@@ -10,6 +10,7 @@ import {
   Container,
   Chip,
 } from '@mui/material';
+import Navbar from '../components/Navbar';
 
 function Dictionary() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -38,6 +39,8 @@ function Dictionary() {
   };
 
   return (
+    <>
+      <Navbar />
     <Container maxWidth="md" sx={{ mt: 4 }}>
       <Typography variant="h4" align="center" gutterBottom>
         Kelime Arama
@@ -80,6 +83,7 @@ function Dictionary() {
         )
       )}
     </Container>
+    </>
   );
 }
 
