@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import './componentCss/GameRule.css';
 
 function GameRule({ title, description, example }) {
@@ -44,13 +45,16 @@ function GameRule({ title, description, example }) {
 
   return (
     <div
-      className="game-rule-tooltip-wrapper"
+      className="game-rule-tooltip-wrapper game-rule-fixed-top-right"
       ref={wrapperRef}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <span className="show-rules-tooltip-label">How to Play</span>
+      <span className="show-rules-tooltip-label">
+        <InfoOutlinedIcon style={{ verticalAlign: 'middle', marginRight: 6, fontSize: 26 }} />
+        How to Play
+      </span>
       {visible && (
         <div className="game-rule-tooltip-content">
           <aside className="game-rule">

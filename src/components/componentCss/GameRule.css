@@ -13,9 +13,16 @@
 .game-rule-tooltip-content {
   position: absolute;
   top: 30px;
-  left: 0;
+  right: 0;
+  left: auto;
   z-index: 100;
   animation: fadeSlideDown 0.3s ease-out;
+  max-width: 400px;
+  min-width: 300px;
+  box-sizing: border-box;
+  /* Prevent overflow on the right */
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 @keyframes fadeSlideDown {
@@ -34,7 +41,8 @@
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   padding: 20px 18px;
-  max-width: 320px;
+  max-width: 400px;
+  min-width: 300px;
   font-size: 1rem;
 }
 
@@ -54,4 +62,28 @@
   padding: 10px;
   margin-top: 10px;
   font-size: 0.98rem;
+}
+
+.game-rule-fixed-top-right {
+  position: fixed;
+  top: 80px;
+  right: 32px;
+  z-index: 2000;
+}
+
+@media (max-width: 500px) {
+  .game-rule-tooltip-content {
+    max-width: 95vw;
+    min-width: 0;
+    right: 0;
+    left: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .game-rule-fixed-top-right {
+    top: 12px;
+    right: 8px;
+    max-width: 90vw;
+  }
 }
