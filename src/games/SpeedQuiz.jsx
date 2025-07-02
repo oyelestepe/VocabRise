@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import oxford3000 from '../Flip_Card_App/oxford3000.json';
 import './gamesCss/SpeedQuiz.css';
 import Navbar from '../components/Navbar';
+import GameRule from '../components/GameRule';
 
 function SpeedQuiz() {
   const [selectedLevels, setSelectedLevels] = useState([]);
@@ -26,13 +27,13 @@ function SpeedQuiz() {
   // start game
   const startGame = () => {
     if (selectedLevels.length === 0) {
-      alert('Lütfen en az bir seviye seçin.');
+      alert('Please select at least one level.');
       return;
     }
 
     // fetch words from selected levels
     let selectedWords = [];
-    if (selectedLevels.includes('Karışık')) {
+    if (selectedLevels.includes('Mixed')) {
       selectedWords = Object.values(oxford3000).flat();
     } else {
       selectedWords = selectedLevels.flatMap(l => oxford3000[l] || []);
@@ -112,14 +113,24 @@ function SpeedQuiz() {
   return (
     <>  
     <Navbar />
+    <GameRule 
+      title={"Speed Quiz"}
+      description={"Test your vocabulary speed! Choose levels and answer as many words as you can in 60 seconds. Type the Turkish meaning of the English word shown."}
+      example={ 
+        <>
+          <div>English: <b>amazing</b></div>
+          <div>Turkish: <b>harika</b></div>
+        </>
+      }
+    />
     <div className="speed-quiz-container">
       <h1>Speed Quiz</h1>
 
       {!gameStarted && !gameEnded && (
         <div className="game-start">
-          <h3>Seviye Seçin</h3>
+          <h3>Choose Level</h3>
           <div className="level-selection">
-            {['A1', 'A2', 'B1', 'B2', 'Karışık'].map(level => (
+            {['A1', 'A2', 'B1', 'B2', 'Mixed'].map(level => (
               <label
                 key={level}
                 className={`level-label ${selectedLevels.includes(level) ? 'selected' : ''}`}
@@ -134,7 +145,7 @@ function SpeedQuiz() {
             ))}
           </div>
           <button onClick={startGame} className="start-button">
-            Oyunu Başlat
+            Play
           </button>
         </div>
       )}
@@ -142,8 +153,8 @@ function SpeedQuiz() {
       {gameStarted && !gameEnded && (
         <div className="game-board">
           <div className="game-info">
-            <p>Kalan Süre: {timeLeft} saniye</p>
-            <p>Puan: {score}</p>
+            <p>Remaining Time: {timeLeft} seconds</p>
+            <p>Points: {score}</p>
           </div>
           <div className="quiz-question">
             <h3>{words[currentWordIndex]?.En}</h3>
@@ -152,19 +163,19 @@ function SpeedQuiz() {
               value={userInput}
               onChange={(e) => setUserInput(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && checkAnswer()}
-              placeholder="Türkçe anlamını yazın..."
+              placeholder="Write the meaning in Turkish..."
               autoFocus
             />
             {showCorrectAnswer && (
-              <p className="correct-answer">Doğru Cevap: {correctAnswer}</p>
+              <p className="correct-answer">Correct Answer: {correctAnswer}</p>
             )}
           </div>
           <div className="action-buttons">
             <button onClick={handleSkip} className="skip-button">
-              Pas Geç
+              Pass
             </button>
             <button onClick={finishGame} className="finish-button">
-              Bitir
+              Finish
             </button>
           </div>
         </div>
@@ -172,10 +183,10 @@ function SpeedQuiz() {
 
       {gameEnded && (
         <div className="game-results">
-          <h3>Oyun Bitti!</h3>
-          <p>Toplam Puan: {score}</p>
+          <h3>Game Over!</h3>
+          <p>Total Points: {score}</p>
           <button onClick={resetGame} className="reset-button">
-            Tekrar Dene
+            Play Again
           </button>
         </div>
       )}

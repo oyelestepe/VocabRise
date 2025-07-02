@@ -14,6 +14,7 @@ import {
 } from '@mui/material';
 import oxford3000 from '../Flip_Card_App/oxford3000.json';
 import Navbar from '../components/Navbar';
+import  GameRule from '../components/GameRule';
 
 function WordChain() {
   const [selectedLevels, setSelectedLevels] = useState([]);
@@ -114,21 +115,33 @@ function WordChain() {
     } else if (timeLeft === 0) {
       setGameEnded(true);
       setGameStarted(false);
-      setMessage('Süre doldu! Oyun bitti.');
+      setMessage("Time's up! Game over.");
     }
   }, [gameStarted, timeLeft, gameEnded]);
 
   return (
     <>  
     <Navbar />
+    <GameRule
+    title={"Word Chain"}
+    description={
+      "Each word must begin with the last letter of the previous word."
+    }
+    example={
+      <>
+        <div>Previous word: <b>apple</b></div>
+        <div>Your word: <b>elephant</b></div>
+      </>
+    }
+    />
     <Container maxWidth="md" sx={{ mt: 4, textAlign: 'center' }}>
       <Typography variant="h3" gutterBottom>
-        Kelime Zinciri
+        Word Chain
       </Typography>
 
       {!gameStarted && (
         <FormControl component="fieldset" sx={{ mb: 3 }}>
-          <FormLabel component="legend">Seviye Seçin</FormLabel>
+          <FormLabel component="legend">Choose Level</FormLabel>
           <FormGroup>
             <FormControlLabel
               control={
@@ -141,7 +154,7 @@ function WordChain() {
                   onChange={handleSelectAll}
                 />
               }
-              label="Tümünü Seç"
+              label="Choose All Levels"
             />
             {Object.keys(oxford3000).map((level) => (
               <FormControlLabel
@@ -172,22 +185,22 @@ function WordChain() {
             sx={{ height: 10, mb: 2 }}
           />
           <Typography variant="h5" gutterBottom>
-            Son Kelime: <span style={{ color: '#1976d2' }}>{currentWord}</span>
+            Last Word: <span style={{ color: '#1976d2' }}>{currentWord}</span>
           </Typography>
           <TextField
             fullWidth
             variant="outlined"
-            label="Yeni kelime yazın"
+            label="Next Word"
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && checkAnswer()}
             sx={{ mb: 2 }}
           />
           <Button variant="contained" onClick={checkAnswer} sx={{ mr: 2 }}>
-            Gönder (Enter)
+            Send (Enter)
           </Button>
           <Button variant="outlined" color="error" onClick={() => setGameEnded(true)}>
-            Oyunu Bitir
+            Finish the Game
           </Button>
         </>
       )}
@@ -201,17 +214,17 @@ function WordChain() {
       {gameEnded && (
         <div>
           <Typography variant="h5" sx={{ mt: 3 }}>
-            Oyun Bitti! Toplam Puan: {score}
+            Game Over! Total Points: {score}
           </Typography>
           <Button variant="contained" sx={{ mt: 2 }} onClick={startGame}>
-            Tekrar Oyna
+            Play Again
           </Button>
         </div>
       )}
 
       {!gameEnded && !gameStarted && (
         <Button variant="contained" size="large" onClick={startGame} sx={{ mt: 2 }}>
-          Oyunu Başlat
+          Play Game
         </Button>
       )}
     </Container>

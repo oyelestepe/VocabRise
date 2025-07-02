@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import oxford3000 from '../Flip_Card_App/oxford3000.json';
 import './gamesCss/MatchingGame.css'; 
 import Navbar from '../components/Navbar';
-
+import GameRule from '../components/GameRule';
 function MatchingGame() {
   const [selectedLevels, setSelectedLevels] = useState([]);
   const [shuffledWords, setShuffledWords] = useState([]);
@@ -23,13 +23,13 @@ function MatchingGame() {
 
   const startGame = () => {
     if (selectedLevels.length === 0) {
-      alert('Lütfen en az bir seviye seçin.');
+      alert('Please select at least one level.');
       return;
     }
 
     // fetch words from selected levels
     let selectedWords = [];
-    if (selectedLevels.includes('Karışık')) {
+    if (selectedLevels.includes('Mixed')) {
       selectedWords = Object.values(oxford3000).flat();
     } else {
       selectedWords = selectedLevels.flatMap(l => oxford3000[l] || []);
@@ -93,14 +93,24 @@ function MatchingGame() {
   return (
     <>
       <Navbar />
+      <GameRule 
+        title="Matching Game"
+        description={"Match the English and Turkish words by clicking on the cards. You have 60 seconds to match as many pairs as possible."}
+        example={
+          <>
+            <div>English: <b>apple</b></div>
+            <div>Turkish: <b>elma</b></div>
+          </>
+        }
+        />
     <div className="matching-game-container">
       <h1>Matching Game</h1>
 
       {!gameStarted && !gameEnded && (
         <div className="game-start">
-          <h3>Seviye Seçin</h3>
+          <h3>Choose Level</h3>
           <div className="level-selection">
-            {['A1', 'A2', 'B1', 'B2', 'Karışık'].map(level => (
+            {['A1', 'A2', 'B1', 'B2', 'Mixed'].map(level => (
               <label
                 key={level}
                 className={`level-label ${selectedLevels.includes(level) ? 'selected' : ''}`}
@@ -115,7 +125,7 @@ function MatchingGame() {
             ))}
           </div>
           <button onClick={startGame} className="start-button">
-            Oyunu Başlat
+            Play
           </button>
         </div>
       )}
@@ -123,8 +133,8 @@ function MatchingGame() {
       {gameStarted && !gameEnded && (
         <div className="game-board">
           <div className="game-info">
-            <p>Kalan Süre: {timeLeft} saniye</p>
-            <p>Puan: {score}</p>
+            <p>Remaining Time: {timeLeft} seconds</p>
+            <p>Points: {score}</p>
           </div>
           <div className="cards-grid">
             {shuffledWords.map((card) => (
@@ -144,10 +154,10 @@ function MatchingGame() {
 
       {gameEnded && (
         <div className="game-results">
-          <h3>Oyun Bitti!</h3>
-          <p>Toplam Puan: {score}</p>
+          <h3>Game Over!</h3>
+          <p>Total Points: {score}</p>
           <button onClick={resetGame} className="reset-button">
-            Tekrar Dene
+            Play Again
           </button>
         </div>
       )}
