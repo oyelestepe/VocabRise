@@ -54,7 +54,7 @@ function Navbar() {
                   <Link to="/speed-quiz">Speed Quiz</Link>
                 </li>
                 <li>
-                  <Link to="/wordchain">Wordchain</Link>
+                  <Link to="/word-chain">Wordchain</Link>
                 </li>
               </ul>
             </li>
