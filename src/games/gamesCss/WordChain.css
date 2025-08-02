@@ -106,12 +106,12 @@
 }
   
 .btn-primary {
-  background: #3498db;
+  background: var(--primary-color) !important;
   color: white;
 }
   
 .btn-primary:hover {
-  background: #2980b9;
+  background: var(--secondary-color) !important;
   transform: translateY(-1px);
 }
   

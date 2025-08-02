@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import LogoutButton from './LogoutButton';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import '../style/Profile.css';
 
 const UserProfile = () => {
   const [userName, setUserName] = useState('');
@@ -48,9 +49,9 @@ const UserProfile = () => {
   }
 
   return (
-    <div>
+    <div className="profile-page">
       <h1>Welcome, {userName ? userName : 'Guest'}!</h1>
-      {userName && <LogoutButton />}
+      {userName && <LogoutButton className="logout-btn" />}
       <ToastContainer
         position="top-right"
         autoClose={5000}

@@ -21,16 +21,20 @@
   
 .level-label {
   padding: 10px 20px;
-  border: 1px solid #3498db;
+  border: 1px solid var(--primary-color) !important;
   border-radius: 5px;
   cursor: pointer;
   background: #fff;
   transition: all 0.3s;
 }
+
+.level-label:hover {
+ background-color: var(--secondary-color) !important;
+}
   
 .level-label.selected {
-  background: #3498db;
-  color: white;
+  background: var(--primary-color) !important;
+  color: #fff !important;
 }
   
 .start-button {

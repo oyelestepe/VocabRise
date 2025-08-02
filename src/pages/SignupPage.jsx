@@ -2,8 +2,10 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { toast, ToastContainer } from 'react-toastify';
 import { signUpSchema } from '../assets/validationSchemas';
-import { auth, db, doc, setDoc } from '../firebase'; // setDoc'i import edin
+import { auth, db, doc, setDoc } from '../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import Navbar from '../components/Navbar';
+import '../style/SignupPage.css';
 
 const SignupPage = () => {
   const handleSubmit = async (values, { resetForm }) => {
@@ -29,6 +31,8 @@ const SignupPage = () => {
   };
 
   return (
+    <>
+      <Navbar />
     <div className="signup-page">
       <ToastContainer />
       <h2>Sign Up</h2>
@@ -64,6 +68,7 @@ const SignupPage = () => {
         )}
       </Formik>
     </div>
+    </>
   );
 };
 
