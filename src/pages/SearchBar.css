@@ -1,0 +1,46 @@
+body {
+  background-color: #333;
+  color: #333;
+  line-height: 1.6;
+}
+.search-bar-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  text-align: center;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+  
+.search-input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #3498db;
+  border-radius: 5px;
+  width: 80%;
+  margin-top: 10px;
+}
+  
+.search-results {
+  margin-top: 20px;
+}
+  
+.word-card {
+  padding: 15px;
+  border: 1px solid #3498db;
+  border-radius: 5px;
+  background: #fff;
+  margin-bottom: 10px;
+  text-align: left;
+}
+  
+.word-card h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+  
+.word-card p {
+  margin: 5px 0 0;
+  color: #666;
+}

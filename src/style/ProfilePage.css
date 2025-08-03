@@ -1,0 +1,204 @@
+.profile-page {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 32px 24px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+  font-family: 'Montserrat', 'Arial', sans-serif;
+  text-align: center;
+}
+
+.profile-page h1 {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+.profile-details {
+  margin-bottom: 28px;
+  background: #f7fafc;
+  border-radius: 10px;
+  padding: 18px 0;
+}
+
+.profile-details p {
+  margin: 8px 0;
+  color: #444;
+  font-size: 1.08rem;
+}
+
+.profile-details label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: 500;
+}
+
+.profile-details input[type="text"] {
+  padding: 7px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  margin-left: 8px;
+  font-size: 1rem;
+}
+
+.profile-details button {
+  margin-top: 10px;
+  padding: 7px 18px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.profile-details button:hover {
+  background: #0056b3;
+}
+
+.change-password {
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 18px 0 10px 0;
+  margin-bottom: 18px;
+}
+
+.change-password h2 {
+  margin-bottom: 12px;
+  color: #2d3748;
+}
+
+.change-password label {
+  display: block;
+  margin: 10px 0 4px 0;
+  color: #333;
+  font-weight: 500;
+}
+
+.change-password input[type="password"] {
+  padding: 7px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 1rem;
+  margin-bottom: 8px;
+}
+
+.change-password button {
+  margin: 8px 6px 0 6px;
+  padding: 7px 18px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.change-password button:hover {
+  background: #0056b3;
+}
+
+.logout-button {
+  margin: 12px 0 0 0;
+  padding: 10px 24px;
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.logout-button:hover {
+  background: #c0392b;
+}
+
+.home-button {
+  margin: 12px 0 0 0;
+  padding: 10px 24px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.home-button:hover {
+  background: #0056b3;
+}
+
+.subscription-upgrade {
+  margin-top: 24px;
+  background: #f7fafc;
+  border-radius: 10px;
+  padding: 16px 0;
+}
+
+.subscription-upgrade h2 {
+  margin-bottom: 12px;
+  color: #2d3748;
+}
+
+.subscription-upgrade button {
+  margin: 0 8px;
+  padding: 8px 20px;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.subscription-upgrade button:hover {
+  background: #218838;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.spinner {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #007bff;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+@media (max-width: 600px) {
+  .profile-page {
+    padding: 12px 2px;
+    max-width: 98vw;
+  }
+  .profile-page h1 {
+    font-size: 1.2rem;
+  }
+  .profile-details, .subscription-upgrade, .change-password {
+    padding: 10px 0;
+  }
+}
