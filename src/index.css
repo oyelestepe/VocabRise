@@ -15,102 +15,58 @@ body{
 
 
 /* HOMPAGE */
-.hero-section {
-  background: #f9f9f9;
-  padding: 5rem 1rem;
-  text-align: center;
-  border-bottom: 1px solid #eaeaea;
-}
 
-.hero-content {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.hero-title {
-  font-family: 'Georgia', serif;
-  font-size: 2.8rem;
-  color: #2d3748;
-  margin-bottom: 1rem;
-  letter-spacing: -0.5px;
-}
-
-.hero-subtitle {
-  font-size: 1.2rem;
-  color: #4a5568;
-  margin-bottom: 3rem;
-  font-weight: 300;
-}
-
-.feature-list {
+.hero-container {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 40px;
+  padding: 40px;
   flex-wrap: wrap;
-  margin-bottom: 3rem;
-  color: #4a5568;
 }
 
-.feature-list span {
-  padding: 0.5rem 1rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 20px;
-  font-size: 0.95rem;
-  background: white;
+.hero-img-container {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero-text {
+  flex: 1;
+  max-width: 500px;
+}
+
+.hero-heading {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.hero-subheading {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #666;
 }
 
 .cta-button {
-  background: #2d3748;
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #0070f3;
   color: white;
-  padding: 1.2rem 2.5rem;
   border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 1.5rem;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.3rem;
+  transition: background-color 0.2s ease;
 }
 
 .cta-button:hover {
-  background: #1a202c;
-  transform: translateY(-2px);
+  background-color: #005bb5;
 }
 
-.price {
-  font-size: 0.9rem;
-  font-weight: 300;
-  opacity: 0.9;
-}
-
-.guarantee {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: #48bb78;
-  font-size: 0.9rem;
-  padding: 0.8rem 1.5rem;
-  background: #f0fff4;
-  border-radius: 20px;
-  margin-top: 1rem;
-}
-
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2rem;
-  }
-  
-  .hero-subtitle {
-    font-size: 1rem;
-  }
-  
-  .feature-list {
-    gap: 1rem;
-  }
-}
 
 /* vide container */
 .video-container {

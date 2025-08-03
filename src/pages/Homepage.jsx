@@ -2,73 +2,60 @@ import React from 'react'
 import Navbar from '../components/Navbar'
 import ContactForm from "../components/ContactForm";
 import ContactDetails from "../components/ContactDetails";
-import Faq from './Faq'
 import Footer from '../components/Footer'
-import HowItWorks from './HowItWorks';
-import Testimonials from './Testimonials'
-import Privacy from './Privacy'
 import Pricing from '../components/Pricing';
+import Hero from '../components/Hero'
+import UserTestimonials from '../components/UserTestimonials';
+import { useNavigate } from 'react-router-dom';
 function Homepage() {
 
-  const servicesData = [
-    {id:1, img:'quiz.jpg', title:'Interactive quizzes', exp:'Engage with fun quizzes to enhance your vocabulary.'},
-    {id:2, img:'progress.jpg', title:'Progress tracking', exp:'Monitor your learning journey with detailed progress tracking'},
-    {id:3, img:'custom.jpg', title:'Customizable learning paths', exp:'Tailolr your vocabulary learning experience to your needs.'},
-  ]
+  function HeroSection() {
+    const navigate = useNavigate();
+  
+    const handleGetStarted = () => {
+      navigate('/signup');
+    };
+  }
   return (
-    <div>
-      <Navbar />
-      <div className='banner'>
-          <div className='banner-wrapper'>
-            <h2>Unlock your Vocabulary with <span style={{textDecoration:'underline', textDecorationColor:'#6cbd47'}}>VocabRise</span></h2>
-            <p>Master English with ease</p>
-            <button>VIEW SERVICES</button>
-          </div>
+    <>
+    <Navbar/>
+    <div className='hero-container'>
+      <div className="hero-img-container"> 
+        <img src="/hero-img.png" alt="hero-img" className="hero-img" />
       </div>
-      
-      <section className="about">
-        <div className="about-text">
-          <span className="highlight">ELEVATE YOUR VOCABULARY</span>
-          <h1>Master English with Confidence</h1>
-          <p>
-            At VocabRise, we empower Turkish speakers to master English vocabulary through a dynamic and engaging platform.
-            Our innovative features, including quizzes and progress tracking, make learning effective and enjoyable.
-            Based in Istanbul, we are dedicated to helping you expand your language skills and open doors to new opportunities.
-            Join our community and watch your vocabulary soar!
-          </p>
-          <a href="#" className="contact-link">Get in touch</a>
-        </div>
-        <div className="image-container">
-          <img src="about.jpg" alt="Books and papers in a circle"/>
-        </div>
-  </section>
-<Pricing/>
-      <div className='services'>
-        <div className='services-text'>
-          <span>BOOST YOUR VOCABULARY</span>
-          <h4>Interactive learning for turkish speakers</h4>
-        </div>
-       
-       <div className='service-wrapper'>
-       
-        {
-          servicesData.map((service)=>(
-            <div className='service-card' key={service.id}>
-              <img className='service-card-img' src={service.img}/>
-              <h5 className='service-card-title'>{service.title}</h5>
-              <p className='sevice-card-exp'>{service.exp}</p>
-            </div>
-          ))
-        }
-        </div> 
+      <div className="hero-text">
+        <h2 className="hero-heading">Oxford 3000 Mastery</h2>
+        <p className="hero-subheading">İngilizce'nin temelini keşfedin, ömür boyu erişim</p>
+        <button className="cta-button" >Hemen Başla!</button>
       </div>
-      <div className="contact-section">
-        <ContactForm />
-        <ContactDetails />
-      </div>
-      <Footer/>
     </div>
-  )
+    
+    <section className='video-section'>
+      <div className='video-container'>
+        <video width={600} controls autoPlay loop>
+          <source src='speed-quiz.mp4' type='video/mp4'/>
+        </video>
+        <video width={600} controls autoPlay loop>
+          <source src='quiz.mp4' type='video/mp4'/>
+        </video>
+        <video width={600} controls autoPlay loop>
+          <source src='matching-game.mp4' type='video/mp4'/>
+        </video>
+        <video width={600} controls autoPlay loop>
+          <source src='word-chain.mp4' type='video/mp4'/>
+        </video>
+        <video width={600} controls autoPlay loop>
+          <source src='dictionary.mp4' type='video/mp4'/>
+        </video>
+        <video width={600} controls autoPlay loop>
+          <source src='dictionary.mp4' type='video/mp4'/>
+        </video>
+      </div>
+    </section>
+    <UserTestimonials/>
+    <Footer/>
+    </>
+  );
 }
 
 export default Homepage
