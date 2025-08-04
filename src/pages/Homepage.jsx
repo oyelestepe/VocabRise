@@ -4,7 +4,6 @@ import ContactForm from "../components/ContactForm";
 import ContactDetails from "../components/ContactDetails";
 import Footer from '../components/Footer'
 import Pricing from '../components/Pricing';
-import Hero from '../components/Hero'
 import UserTestimonials from '../components/UserTestimonials';
 import { useNavigate } from 'react-router-dom';
 function Homepage() {
@@ -52,6 +51,7 @@ function Homepage() {
         </video>
       </div>
     </section>
+    <Pricing/>
     <UserTestimonials/>
     <Footer/>
     </>

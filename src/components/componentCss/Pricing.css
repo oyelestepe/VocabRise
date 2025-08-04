@@ -1,0 +1,145 @@
+:root {
+  --light-text: #ffffff;
+  --dark-text: #333333;
+  --muted-text: #aaaaaa;
+}
+
+.price-cards {
+  padding: 40px 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.pricing-title {
+  font-size: 2.1rem;
+  color: var(--dark-text);
+  margin-bottom: 40px;
+}
+
+.price-cards-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.price-card {
+  background-color: #fff;
+  color: var(--dark-text);
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* ORTADAKİ KART */
+.featured {
+  background-color: var(--secondary-color);
+  color: var(--light-text);
+  border: 2px solid var(--secondary-color);
+}
+
+.price-card-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.featured .price-card-title,
+.featured .price-card-price,
+.featured .prices-li,
+.featured .price-duration {
+  color: var(--light-text);
+}
+
+.price-card-price {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.price-amount {
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+.price-duration {
+  font-size: 1rem;
+  color: var(--muted-text);
+}
+
+.prices-ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+  flex-grow: 1;
+  text-align: left;
+}
+
+.prices-li {
+  font-size: 1rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.check-icon {
+  margin-right: 10px;
+  font-size: 1.2rem;
+  color: #4caf50;
+}
+
+/* Farklı arkaplan için icon rengi güncelle */
+.featured .check-icon {
+  color: #9ae6b4;
+}
+
+.price-card-btn-wrapper {
+  margin-top: auto;
+}
+
+.price-card-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.price-card-btn:hover {
+  background-color: var(--secondary-color);
+}
+
+/* Ortadaki kartta açık buton */
+.featured .price-card-btn {
+  background-color: #ffffff;
+  color: var(--secondary-color);
+}
+
+.featured .price-card-btn:hover {
+  background-color: #e5e5e5;
+}
+
+.btn-light {
+  background-color: #ffffff;
+  color: var(--secondary-color);
+}
