@@ -1,15 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet, Link, useNavigate } from 'react-router-dom';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { auth } from '../firebase';
 import { signOut } from 'firebase/auth';
-import './componentCss/navbar.css'
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import './componentCss/navbar.css';
 
 function Navbar() {
   const navigate = useNavigate();
   const user = auth.currentUser;
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -20,86 +22,75 @@ function Navbar() {
     }
   };
 
+  const handleMenuToggle = () => {
+    setMenuOpen(!menuOpen);
+    setDropdownOpen(false);
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+  }, [menuOpen]);
+
   return (
     <>
       <nav className="navbar">
-        <span className="brand">
-        <img src="/logo.png" alt="VocabRise Logo" style={{height:'36px'}}></img>
-        <span>VocabRise</span>
-        </span>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <Link to="/" className="brand">
+          <img src="/logo.png" alt="VocabRise Logo" style={{ height: '36px' }} />
+          <span>VocabRise</span>
+        </Link>
+        <div className="hamburger-menu-icon" onClick={handleMenuToggle}>
+          <MenuIcon fontSize="large" />
+        </div>
+
+        <div className={`navbar-links ${menuOpen ? 'open' : ''}`}>
+          <div className="close-menu-icon" onClick={handleMenuToggle}>
+            <CloseIcon fontSize="large" />
+          </div>
+
           <ul className="navbar-ul">
             <li className="navbar-li">
-              <Link to="/">Home</Link>
+              <Link to="/" onClick={handleMenuToggle}>Home</Link>
             </li>
             <li className="navbar-li">
-              <Link to="/about">About</Link>
+              <Link to="/about" onClick={handleMenuToggle}>About</Link>
             </li>
             <li className="navbar-li">
-              <Link to="/dictionary">Dictionary</Link>
+              <Link to="/dictionary" onClick={handleMenuToggle}>Dictionary</Link>
             </li>
             <li className="navbar-li">
-              <Link to="/stories">Stories</Link>
+              <Link to="/stories" onClick={handleMenuToggle}>Stories</Link>
             </li>
-            <li className="navbar-li navbar-dropdown">
+            <li
+              className="navbar-li navbar-dropdown"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+            >
               <span>Games</span>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link to="/matching-game">Matching Game</Link>
-                </li>
-                <li>
-                  <Link to="/quiz-game">Quiz Game</Link>
-                </li>
-                <li>
-                  <Link to="/speed-quiz">Speed Quiz</Link>
-                </li>
-                <li>
-                  <Link to="/word-chain">Wordchain</Link>
-                </li>
+              <ul className={`dropdown-menu ${dropdownOpen ? 'open' : ''}`}>
+                <li><Link to="/matching-game" onClick={handleMenuToggle}>Matching Game</Link></li>
+                <li><Link to="/quiz-game" onClick={handleMenuToggle}>Quiz Game</Link></li>
+                <li><Link to="/speed-quiz" onClick={handleMenuToggle}>Speed Quiz</Link></li>
+                <li><Link to="/word-chain" onClick={handleMenuToggle}>Wordchain</Link></li>
               </ul>
             </li>
           </ul>
-          {user ? (
-            <>
-              <IconButton
-                color="inherit"
-                onClick={() => navigate('/profile')}
-                sx={{ margin: '0 10px' }}
-              >
-                <AccountCircleIcon fontSize="large" />
-              </IconButton>
-              <Button
-                variant="contained"
-                size="small"
-                style={{ margin: '5px', backgroundColor: '#ff4d4d', color: 'white' }}
-                onClick={handleLogout}
-              >
-                Logout
-              </Button>
-            </>
-          ) : (
-            <>
-              <Button variant="contained" size="small" style={{ margin: '5px' }}>
-                <Link to="/signup" style={{ textDecoration: 'none', color: 'inherit' }}>
-                  Sign up
-                </Link>
-              </Button>
-              <Button
-                variant="contained"
-                size="small"
-                style={{
-                  margin: '5px',
-                  backgroundColor: '#ececec',
-                  color: 'black',
-                  fontWeight: 'bold',
-                }}
-              >
-                <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
-                  Log in
-                </Link>
-              </Button>
-            </>
-          )}
+
+          <div className="navbar-auth-buttons">
+            {user ? (
+              <>
+                <button className="nav-icon-button" onClick={() => { navigate('/profile'); setMenuOpen(false); }}>
+                  <AccountCircleIcon fontSize="large" />
+                </button>
+                <button className="nav-logout-button" onClick={() => { handleLogout(); setMenuOpen(false); }}>
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <a href="/signup" className="signup-button">Sign up</a>
+                <a href="/login" className="login-button">Log in</a>
+              </>
+            )}
+          </div>
         </div>
       </nav>
       <Outlet />

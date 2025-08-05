@@ -1,18 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 *{
   margin: 0;
   padding: 0;
+  font-family: "Roboto", sans-serif;
 }
 
 :root{
   --primary-color: #4f46e5;       
   --secondary-color: #6366f1; 
 }
-
-
-body{
-  font-family: Roboto, Montserrat ;
-}
-
 
 /* HOMPAGE */
 
@@ -60,7 +57,7 @@ body{
 .cta-button {
   padding: 12px 24px;
   font-size: 1rem;
-  background-color: #0070f3;
+  background-color: var(--secondary-color);
   color: white;
   border: none;
   border-radius: 8px;
@@ -69,7 +66,7 @@ body{
 }
 
 .cta-button:hover {
-  background-color: #005bb5;
+  background-color: var(--primary-color);
 }
 
 /* vide container */
@@ -112,7 +109,6 @@ body{
   z-index: 3;
 }
 
-/* Başlık için ek stil (HTML'de eklemen gerekebilir) */
 .video-section-title {
   text-align: center;
   font-size: 2.5rem;
