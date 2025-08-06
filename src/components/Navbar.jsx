@@ -52,7 +52,7 @@ function Navbar() {
               <Link to="/" onClick={handleMenuToggle}>Home</Link>
             </li>
             <li className="navbar-li">
-              <Link to="/about" onClick={handleMenuToggle}>About</Link>
+              <Link to="/flashcard" onClick={handleMenuToggle}>FlashCard</Link>
             </li>
             <li className="navbar-li">
               <Link to="/dictionary" onClick={handleMenuToggle}>Dictionary</Link>

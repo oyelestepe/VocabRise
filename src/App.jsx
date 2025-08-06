@@ -3,14 +3,10 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { auth } from './firebase';
 import Hompage from './pages/Homepage';
 import Faq from './pages/Faq';
-import Privacy from './pages/Privacy';
-import Testimonials from './pages/Testimonials';
-import HowItWorks from './pages/HowItWorks';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import ProfilePage from './user_interface/ProfilePage';
 import SubscriptionPage from './user_interface/SubscriptionPage';
-import Pricing from './components/Pricing';
 import FlashcardApp from './Flip_Card_App/FlashcardApp';
 import QuizGame from './games/QuizGame';
 import MatchingGame from './games/MatchingGame';
@@ -30,12 +26,8 @@ function App() {
       {/* PUBLIC PAGES */}
         <Route path="/" element={<Hompage />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/privacypolicy" element={<Privacy />} />
-        <Route path="/testimonial" element={<Testimonials />} />
-        <Route path="/howitworks" element={<HowItWorks />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<SignupPage />} />
-        <Route path="/pricing" element={<Pricing />} />
         <Route path='quiz-game' element={<QuizGame/>}/>
         <Route path='matching-game' element={<MatchingGame/>}/>
         <Route path='speed-quiz' element={<SpeedQuiz/>}/>
