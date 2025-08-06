@@ -51,7 +51,7 @@ function Homepage() {
         </video>
       </div>
     </section>
-     <div className='featured-section'>
+    <div className='featured-section'>
       <div className='featured-text'>
         <h2 className='featured-title'>VocabRise ile Kolayca İngilizce Öğrenin</h2>
         <p className='featured-p'>VocabRise, Oxford 3000 kelimelerini eğlenceli ve etkileşimli bir şekilde öğrenmenizi sağlar. Oyunlar, hikayeler ve etkileşimli sözlük ile İngilizce bilginizi geliştirin.</p>
