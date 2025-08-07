@@ -1,0 +1,72 @@
+.word-counter-container {
+  padding: 60px 20px;
+  background: #f9fafb;
+  text-align: center;
+}
+
+.word-counter-header h2 {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.word-counter-header p {
+  font-size: 16px;
+  color: #444;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.horizontal-levels {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  justify-content: center;
+  scroll-snap-type: x mandatory;
+}
+
+.level-card {
+  flex: 0 0 auto;
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  min-width: 160px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.level-card:hover {
+  transform: translateY(-5px);
+}
+
+.level-emoji {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.level-text h3 {
+  font-size: 20px;
+  color: var(--primary-color);
+  margin-bottom: 5px;
+}
+
+.big-count {
+  font-size: 28px;
+  font-weight: bold;
+  color: #111;
+}
+
+.label {
+  font-size: 14px;
+  color: #555;
+}
+
+.coming-soon {
+  opacity: 0.6;
+  border: 2px dashed var(--secondary-color);
+  background: #f3f4f6;
+}

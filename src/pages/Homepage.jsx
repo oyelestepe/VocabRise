@@ -6,6 +6,8 @@ import Footer from '../components/Footer'
 import Pricing from '../components/Pricing';
 import UserTestimonials from '../components/UserTestimonials';
 import { useNavigate } from 'react-router-dom';
+import WordCounter from '../components/WordCounter';
+import EmailSubscribe from '../components/EmailSubscribe';
 function Homepage() {
 
   function HeroSection() {
@@ -28,7 +30,6 @@ function Homepage() {
         <button className="cta-button" >Hemen Başla!</button>
       </div>
     </div>
-    
     <section className='video-section'>
       <div className='video-container'>
         <video width={600} controls autoPlay loop>
@@ -61,10 +62,10 @@ function Homepage() {
         <img src="/before-after.png" alt="before-after" className="before-after" />
       </div>
     </div>
+    <WordCounter/>
     <UserTestimonials/>
     <Pricing/>
-   
-    
+    <EmailSubscribe/>
     <Footer/>
     </>
   );
