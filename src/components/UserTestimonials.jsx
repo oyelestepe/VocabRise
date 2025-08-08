@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import './componentCss/UserTestimonials.css';
 
 const testimonials = [
@@ -33,12 +33,42 @@ function StarRating({ count }) {
 }
 
 function UserTestimonials() {
+  const containerRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section" ref={containerRef}>
       <h2>User Testimonials</h2>
       <div className="testimonials-list">
         {testimonials.map((t, idx) => (
-          <div className="testimonial-card" key={idx}>
+          <div
+            className={`testimonial-card ${isVisible ? 'animate' : ''}`}
+            key={idx}
+            style={{ animationDelay: `${0.2 + idx * 0.2}s` }}
+          >
             <img src={t.photo} alt={t.name} className="testimonial-photo" />
             <StarRating count={t.rating} />
             <div className="testimonial-info">

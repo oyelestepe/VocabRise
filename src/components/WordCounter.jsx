@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import './componentCss/WordCounter.css';
 
 const levels = [
@@ -10,8 +10,34 @@ const levels = [
 
 const WordCounter = () => {
   const [counts, setCounts] = useState(levels.map(() => 0));
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const containerRef = useRef(null);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !hasAnimated) {
+            animateCounts();
+            setHasAnimated(true);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
+    };
+  }, [hasAnimated]);
+
+  const animateCounts = () => {
     const duration = 1500;
     const steps = 30;
     const intervalTime = duration / steps;
@@ -27,11 +53,13 @@ const WordCounter = () => {
       }, intervalTime);
     });
 
-    return () => intervals.forEach(clearInterval);
-  }, []);
+    setTimeout(() => {
+      intervals.forEach(clearInterval);
+    }, duration + 100);
+  };
 
   return (
-    <section className="word-counter-container">
+    <section className="word-counter-container" ref={containerRef}>
       <div className="word-counter-header">
         <h2>Kelime Hedeflerini Seviyelere Göre Keşfet</h2>
         <p>
