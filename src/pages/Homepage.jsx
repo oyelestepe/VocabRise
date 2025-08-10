@@ -1,13 +1,12 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
-import ContactForm from "../components/ContactForm";
-import ContactDetails from "../components/ContactDetails";
 import Footer from '../components/Footer'
 import Pricing from '../components/Pricing';
 import UserTestimonials from '../components/UserTestimonials';
 import { useNavigate } from 'react-router-dom';
 import WordCounter from '../components/WordCounter';
 import EmailSubscribe from '../components/EmailSubscribe';
+import ContactUs from './ContactUs';
 function Homepage() {
 
   function HeroSection() {
@@ -73,6 +72,7 @@ function Homepage() {
     <UserTestimonials/>
     <Pricing/>
     <EmailSubscribe/>
+    <ContactUs/>
     <Footer/>
     </>
   );

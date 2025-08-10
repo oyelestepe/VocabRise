@@ -403,43 +403,6 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Gölge efekti */
 }
 
-/* HOW IT WORKS */
-
-.information {
-  height: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  justify-content: center; 
-  background-color: #EEF1EF;
-  padding: 70px;
-  position: relative; 
-}
-
-.information img {
-  width: 50%; 
-  height: auto; 
-}
-
-.info-text {
-  position: relative;
-  width: 50%; 
-  text-align: left; 
-  margin-top: 10px; 
-}
-
-.information span {
-  font-size: 18px;
-  font-weight: 500;
-  color: #5aa639;
-}
-
-.information h3 {
-  font-size: 28px;
-  font-weight: 700;
-  margin-top: 5px;
-}
-
 /* testimonial */
 .testimonial-hero{
   display: flex;
