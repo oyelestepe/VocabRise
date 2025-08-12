@@ -333,75 +333,7 @@
     margin: 0;
   }
 }
-
-
 /* END OF FEATURED */
-
-.faq {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 60%; 
-  margin: 20px auto;
-}
-
-.getin-touch {
-  height: 30vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  text-align: center;
-  background-color: #111;
-  color: #fff;
-  transition: background-color 0.3s ease;
-}
-
-.getin-touch:hover {
-  background-color: #1a1a1a;
-}
-
-.text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.text p {
-  font-size: 18px;
-  margin: 0;
-  font-weight: 600;
-}
-
-.text h4 {
-  font-size: 30px;
-  margin: 10px 0;
-  font-weight: 700;
-}
-
-.getin-touch button {
-  height: 50px;
-  width: 200px;
-  font-weight: 600;
-  border: 2px solid white;
-  background-color: transparent;
-  color: white;
-  transition: all 0.4s ease;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.getin-touch button:hover {
-  border: 2px solid #6cbd47;
-  background-color: #6cbd47;
-  color: white;
-  transform: translateY(-5px); /* Buton hover'da hafifçe yukarı kalkar */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Gölge efekti */
-}
 
 /* testimonial */
 .testimonial-hero{
