@@ -14,6 +14,8 @@ import SpeedQuiz from './games/SpeedQuiz';
 import Dictionary from './pages/Dictionary';
 import WordChain from './games/WordChain';
 import Stories from './english_stories/Stories';
+import Policy from './pages/Policy';
+
 const ProtectedRoute = ({ children }) => {
   const user = auth.currentUser;
   return user ? children : <Navigate to="/login" replace />;
@@ -34,6 +36,7 @@ function App() {
         <Route path='dictionary' element={<Dictionary/>}/>
         <Route path='word-chain' element={<WordChain/>}/>
         <Route path='stories' element={<Stories/>}/>
+        <Route path='/policy' element={<Policy />} />
         {/* ONLY FOR USERS */}
         <Route
           path="/profile"

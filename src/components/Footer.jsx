@@ -53,7 +53,7 @@ function Footer() {
           <ul>
             <li><a href="/faq">FAQ</a></li>
             <li><a href="/contact">Contact</a></li>
-            <li><a href="/privacy">Privacy Policy</a></li>
+            <li><a href="/policy">Privacy Policy</a></li>
           </ul>
         </div>
       </div>
